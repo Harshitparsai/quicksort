@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+int Pivot(int a[],int start,int last)
+{
+	int r = start;
+	int i = start + 1;
+	for(int j=start + 1 ;j <= last;j++)
+	{
+		if(a[j]<a[r])
+		{
+			
+			swap(a[i],a[j]);
+			i++;
+		}
+	}
+	swap(a[r],a[i-1]);
+	return(i-1);
+	
+}
+void quicksort(int a[],int start,int last)
+{
+	if(start<last)
+	{
+		int pivot = Pivot(a,start,last);
+		quicksort(a,start,pivot);
+		quicksort(a,pivot+1,last);
+	}
+}
+int main()
+{
+
+		cout<<"enter the number of the element you wanna to sort";
+		int n;
+		cin>>n;
+		int a[n];
+		for(int i=0;i<n;i++)
+		{
+			cin>>a[i];
+		}
+		quicksort(a,0,n-1);
+		cout<<"the sorted array is ";
+		for(int i=0;i<n;i++)
+		{
+			cout<<a[i]<<" ";
+			}	
+}
